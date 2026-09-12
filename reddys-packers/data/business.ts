@@ -12,6 +12,14 @@ export const business = {
     state: "Andhra Pradesh",
     pin: "517325",
   },
+  geo: {
+    lat: 13.5584009,
+    lng: 78.5083428,
+  },
+  // Paste the verification code Google Search Console gives you after you
+  // add the property (Settings > Ownership verification > HTML tag,
+  // just the `content` value, not the whole <meta> tag). Leave empty until then.
+  googleSiteVerification: "",
   stats: [
     { value: "100%", label: "Satisfaction" },
     { value: "1200+", label: "Happy customers" },

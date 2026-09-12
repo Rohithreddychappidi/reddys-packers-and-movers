@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import JsonLd from "@/components/JsonLd";
 import { business } from "@/data/business";
 import { allCities, slugify, unslugify } from "@/data/cities";
 
@@ -33,6 +34,9 @@ export function generateMetadata({ params }: Props): Metadata {
       "packers and movers",
       business.name,
     ],
+    alternates: {
+      canonical: `/packers-and-movers-in/${params.city}`,
+    },
     openGraph: {
       title: `Packers and Movers in ${city} | ${business.name}`,
       description,
@@ -45,8 +49,39 @@ export default function CityPage({ params }: Props) {
   const city = unslugify(params.city);
   if (!city) notFound();
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Packers and movers",
+    name: `Packers and Movers in ${city}`,
+    areaServed: {
+      "@type": "City",
+      name: city,
+    },
+    provider: {
+      "@type": "MovingCompany",
+      name: business.name,
+      telephone: `+${business.phoneRaw}`,
+      image: `https://${business.domain}/logo.png`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: `${business.address.line1}, ${business.address.line2}`,
+        addressLocality: business.address.city,
+        addressRegion: business.address.state,
+        postalCode: business.address.pin,
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: business.geo.lat,
+        longitude: business.geo.lng,
+      },
+    },
+  };
+
   return (
     <main>
+      <JsonLd data={structuredData} />
       <Header />
 
       <section className="relative flex min-h-[60vh] items-end overflow-hidden bg-navy-dark">

@@ -3,11 +3,8 @@ import Image from "next/image";
 import { business } from "@/data/business";
 import { cityGroups, slugify } from "@/data/cities";
 
-const mapQuery = encodeURIComponent(
-  `${business.name}, ${business.address.line1}, ${business.address.line2}, ${business.address.city}, ${business.address.state} ${business.address.pin}`
-);
-const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
-const mapLinkSrc = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+const mapEmbedSrc = `https://www.google.com/maps?q=${business.geo.lat},${business.geo.lng}&z=16&output=embed`;
+const mapLinkSrc = `https://www.google.com/maps/place/${business.geo.lat},${business.geo.lng}`;
 
 export default function Footer() {
   return (

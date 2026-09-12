@@ -42,6 +42,16 @@ export const metadata: Metadata = {
   description:
     "Reddys Packers and Movers, Madanapalli — home relocation, office shifting, packing, loading and vehicle transport across Andhra Pradesh and South India.",
   keywords: [...genericKeywords, ...cityKeywords],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  ...(business.googleSiteVerification
+    ? { verification: { google: business.googleSiteVerification } }
+    : {}),
   icons: {
     icon: [
       { url: "/favicon.ico" },

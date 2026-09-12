@@ -42,6 +42,34 @@ Then open http://localhost:3000
    (`vercel deploy`) or any Node hosting. Point `reddyspackers.com` at the
    deployment once it's live.
 
+## SEO that's already set up
+
+- **Meta tags** — title, description, and keyword tags on the home page and
+  on every city page (each city page targets that city specifically, not
+  just the generic list).
+- **Open Graph / Twitter cards** — so links shared on WhatsApp, Facebook, etc.
+  show the logo, a title, and a description.
+- **Structured data (JSON-LD)** — a `MovingCompany` schema on the home page
+  and a `Service` schema on every city page, both including your exact
+  address and coordinates. This is what helps Google show rich results and
+  connect the site to your Business Profile.
+- **Sitemap & robots.txt** — auto-generated at `/sitemap.xml` and
+  `/robots.txt` from `data/cities.ts`, so every city page is discoverable
+  without listing them by hand.
+- **Canonical URLs** — set on the home page and every city page.
+
+## Connecting Search Console (do this after DNS is live)
+
+1. Add `reddyspackers.com` as a property in
+   [Google Search Console](https://search.google.com/search-console).
+2. Choose the **HTML tag** verification method — it gives you a line like
+   `<meta name="google-site-verification" content="XXXXXXXX" />`.
+3. Open `data/business.ts` and paste just the `XXXXXXXX` part into
+   `googleSiteVerification`. Rebuild and redeploy — the tag will appear in
+   the page `<head>` automatically.
+4. Back in Search Console, click Verify, then submit
+   `https://reddyspackers.com/sitemap.xml` under Sitemaps.
+
 ## Adding a new city
 
 Open `data/cities.ts` and add the city name to the right region array (or a

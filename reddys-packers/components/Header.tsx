@@ -1,17 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business } from "@/data/business";
 
 export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-30">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-bold uppercase tracking-tight text-sand">
-            {business.shortName}
-          </span>
-          <span className="hidden font-body text-xs uppercase tracking-[0.2em] text-sand/70 sm:inline">
-            Packers &amp; Movers
-          </span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt={`${business.name} logo`}
+            width={220}
+            height={147}
+            priority
+            className="h-14 w-auto drop-shadow-md sm:h-16"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 font-body text-sm text-sand/90 md:flex">
@@ -39,3 +42,4 @@ export default function Header() {
     </header>
   );
 }
+

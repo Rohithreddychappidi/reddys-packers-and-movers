@@ -1,12 +1,11 @@
 import Image from "next/image";
 
-const recentWork = [
-  { file: "/recent-work/1.jpg", caption: "Home shifting, Madanapalli" },
-  { file: "/recent-work/2.jpg", caption: "Office relocation" },
-  { file: "/recent-work/3.jpg", caption: "Careful packing" },
-  { file: "/recent-work/4.jpg", caption: "Loading & transport" },
-  { file: "/recent-work/5.jpg", caption: "Vehicle transport" },
-  { file: "/recent-work/6.jpg", caption: "Warehouse storage" },
+const recentPhotos = [
+  { file: "/recent-work/1.jpg", caption: "Packed & wrapped for pickup" },
+  { file: "/recent-work/2.jpg", caption: "Palletised & warehouse-ready" },
+  { file: "/recent-work/3.jpg", caption: "Secure wrapping for transit" },
+  { file: "/recent-work/4.jpg", caption: "Loaded & covered for the road" },
+  { file: "/recent-work/5.jpg", caption: "Careful loading, every box accounted for" },
 ];
 
 export default function RecentWork() {
@@ -18,17 +17,12 @@ export default function RecentWork() {
             Recent work
           </h2>
           <p className="mt-3 font-body text-ink/70">
-            A few moves from the last few months. Swap in your own photos any
-            time by replacing the files in{" "}
-            <code className="rounded bg-navy/5 px-1.5 py-0.5 text-sm">
-              /public/recent-work
-            </code>
-            .
+            A few moves from the last few weeks — from packing to the road.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {recentWork.map((item) => (
+          {recentPhotos.map((item) => (
             <figure
               key={item.file}
               className="group relative aspect-square overflow-hidden rounded-sm bg-navy/5"
@@ -44,6 +38,19 @@ export default function RecentWork() {
               </figcaption>
             </figure>
           ))}
+
+          <figure className="group relative aspect-square overflow-hidden rounded-sm bg-navy">
+            <video
+              src="/recent-work/moving-day.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover"
+            />
+            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-dark/80 to-transparent p-3 font-body text-xs text-sand opacity-0 transition-opacity group-hover:opacity-100">
+              Loading day, start to finish
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

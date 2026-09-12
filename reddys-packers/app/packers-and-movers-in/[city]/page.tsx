@@ -19,9 +19,25 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const city = unslugify(params.city);
   if (!city) return {};
+  const description = `${business.name} offers home shifting, office relocation, packing and vehicle transport in ${city}. Get a free quote by call or WhatsApp.`;
   return {
     title: `Packers and Movers in ${city}`,
-    description: `${business.name} offers home shifting, office relocation, packing and vehicle transport in ${city}. Get a free quote by call or WhatsApp.`,
+    description,
+    keywords: [
+      `packers and movers in ${city}`,
+      `movers and packers ${city}`,
+      `home shifting ${city}`,
+      `office relocation ${city}`,
+      `best packers and movers in ${city}`,
+      `house shifting services ${city}`,
+      "packers and movers",
+      business.name,
+    ],
+    openGraph: {
+      title: `Packers and Movers in ${city} | ${business.name}`,
+      description,
+      images: [{ url: "/logo.png" }],
+    },
   };
 }
 
